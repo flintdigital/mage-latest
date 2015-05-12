@@ -1,2 +1,2 @@
 # mage-latest
-Magento Latest Version Repo.
+Flint Curated Instance of Magento Latest Version Repo.
