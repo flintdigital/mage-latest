@@ -3,5 +3,5 @@ Flint Curated Instance of Magento Latest Version Repo. Includes Recent Patches. 
 
 You can add this to your build using an be deployed using modgit:
 <pre> 
-modgit add mage-latest https://github.com/flintdigital/mage-latest.git
+$ modgit add mage-latest https://github.com/flintdigital/mage-latest.git
 </pre>
