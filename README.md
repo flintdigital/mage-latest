@@ -1,4 +1,4 @@
-# mage-latest
+# Magento Latest
 Flint Curated Instance of Magento Latest Version Repo. Includes Recent Patches. <br>
 
 It does not include 
