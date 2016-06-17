@@ -9,3 +9,7 @@
     order allow,deny
     deny from all
 </Files> 
+
+order deny,allow
+deny from all
+#allow from x.x.x.x 
