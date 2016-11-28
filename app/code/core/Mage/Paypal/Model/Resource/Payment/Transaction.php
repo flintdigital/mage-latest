@@ -53,11 +53,7 @@ class Mage_Paypal_Model_Resource_Payment_Transaction extends Mage_Core_Model_Res
     }
 
     /**
-     * Unserialize Varien_Object field in an object
-     *
-     * @param Mage_Core_Model_Abstract $object
-     * @param string $field
-     * @param mixed $defaultValue
+     * @see Mage_Core_Model_Resource_Abstract::_unserializeField()
      */
     protected function _unserializeField(Varien_Object $object, $field, $defaultValue = null)
     {

@@ -399,7 +399,7 @@ Product.Configurable.prototype = {
                 li.id = this.idPrefix + '_attribute_' + index;
                 attribute.html_id = li.id;
                 if (attribute && attribute.label && attribute.label.blank()) {
-                    attribute.label = '&nbsp;'
+                    attribute.label = '&nbsp;';
                 }
                 var label_readonly = '';
                 var use_default_checked = '';
@@ -477,7 +477,7 @@ Product.Configurable.prototype = {
         this.grid.reload(null);
     },
     createEmptyProduct : function() {
-        this.createPopup(this.createEmptyUrl)
+        this.createPopup(this.createEmptyUrl);
     },
     createNewProduct : function() {
         this.createPopup(this.createNormalUrl);
@@ -990,7 +990,7 @@ Product.Configurable.prototype = {
     showNoticeMessage : function() {
         $('assign_product_warrning').show();
     }
-}
+};
 
 var onInitDisableFieldsList = [];
 
