@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Core
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -515,5 +515,25 @@ class Mage_Core_Helper_String extends Mage_Core_Helper_Abstract
         }
 
         return $ord;
+    }
+
+    /**
+     * UnSerialize string
+     * @param $str
+     * @return mixed|null
+     * @throws Exception
+     */
+    public function unserialize($str)
+    {
+        $reader = new Unserialize_Reader_ArrValue('data');
+        $prevChar = null;
+        for ($i = 0; $i < strlen($str); $i++) {
+            $char = $str[$i];
+            $result = $reader->read($char, $prevChar);
+            if (!is_null($result)) {
+                return $result;
+            }
+            $prevChar = $char;
+        }
     }
 }
