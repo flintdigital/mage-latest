@@ -12,4 +12,5 @@ It does not include
 You can add this to your build using an be deployed using modgit:
 <pre> 
 $ modgit add mage-latest https://github.com/flintdigital/mage-latest.git
+$ modgit update mage-latest
 </pre>
