@@ -298,3 +298,43 @@ patching file skin/adminhtml/default/default/media/uploaderSingle.swf
 patching file skin/adminhtml/default/default/xmlconnect/boxes.css
 
 
+-e 2019-03-07 17:14:57 UTC | SUPEE-10975_CE_v1.9.3.10 | CE_1.9.3.10 | v1 | 91395a467666d7381ff4f9629f52a1d406eee65a | Thu Nov 8 13:45:47 2018 +0200 | ce-1.9.3.10-dev
+patching file app/code/core/Mage/Adminhtml/Block/Customer/Group/Edit.php
+patching file app/code/core/Mage/Adminhtml/Block/Newsletter/Template/Edit.php
+patching file app/code/core/Mage/Adminhtml/controllers/Cms/BlockController.php
+patching file app/code/core/Mage/Adminhtml/controllers/Customer/GroupController.php
+patching file app/code/core/Mage/Adminhtml/controllers/SitemapController.php
+patching file app/code/core/Mage/Adminhtml/controllers/System/BackupController.php
+patching file app/code/core/Mage/Captcha/Model/Observer.php
+patching file app/code/core/Mage/Captcha/Model/Zend.php
+patching file app/code/core/Mage/Captcha/etc/config.xml
+patching file app/code/core/Mage/Catalog/Model/Api2/Product/Image/Rest/Admin/V1.php
+patching file app/code/core/Mage/Catalog/Model/Product/Attribute/Media/Api.php
+patching file app/code/core/Mage/Cms/Model/Wysiwyg/Images/Storage.php
+patching file app/code/core/Mage/Core/etc/config.xml
+patching file app/code/core/Mage/Core/sql/core_setup/upgrade-1.6.0.7.1.1-1.6.0.7.1.2.php
+patching file app/code/core/Mage/Dataflow/Model/Convert/Container/Abstract.php
+patching file app/code/core/Mage/ImportExport/Model/Import/Entity/Customer.php
+patching file app/code/core/Mage/ImportExport/Model/Import/Entity/Customer/Address.php
+patching file app/code/core/Mage/Payment/etc/config.xml
+patching file app/code/core/Mage/Payment/etc/system.xml
+patching file app/code/core/Mage/Payment/sql/payment_setup/upgrade-1.6.0.0.1.1-1.6.0.0.1.2.php
+patching file app/code/core/Mage/Sendfriend/Block/Send.php
+patching file app/code/core/Mage/Wishlist/controllers/IndexController.php
+patching file app/code/core/Zend/Controller/Request/Http.php
+patching file app/design/adminhtml/default/default/template/cms/browser/content/files.phtml
+patching file app/design/frontend/base/default/layout/captcha.xml
+patching file app/design/frontend/base/default/template/wishlist/sharing.phtml
+patching file app/design/frontend/rwd/default/layout/page.xml
+patching file app/design/frontend/rwd/default/template/sendfriend/send.phtml
+patching file app/etc/modules/Mage_All.xml
+patching file app/etc/modules/Mage_Captcha.xml
+patching file app/locale/en_US/Mage_Wishlist.csv
+patching file js/lib/jquery/jquery-1.12.0.js
+patching file js/lib/jquery/jquery-1.12.0.min.js
+patching file js/lib/jquery/jquery-1.12.0.min.map
+patching file js/lib/jquery/jquery-1.12.1.js
+patching file js/lib/jquery/jquery-1.12.1.min.js
+patching file js/lib/jquery/jquery-1.12.1.min.map
+
+
