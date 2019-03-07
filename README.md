@@ -1,5 +1,6 @@
 # Magento Latest
 Flint Curated Instance of Magento Latest Version Repo. Includes Recent Patches. <br>
+Current version: 1.9.3.10 <br>
 
 It does not include 
 <ul>
