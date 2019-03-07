@@ -338,3 +338,11 @@ patching file js/lib/jquery/jquery-1.12.1.min.js
 patching file js/lib/jquery/jquery-1.12.1.min.map
 
 
+-e 2019-03-07 17:17:32 UTC | SUPEE-11085 | EE_1.14.4.0 | v1 | 66a7f527682b49c83c7fe133bbf07a0acdd3e00b | Wed Feb 27 20:10:36 2019 +0000 | a3013c00db8dffad73f38d3b8701bf725920bb0a..66a7f527682b49c83c7fe133bbf07a0acdd3e00b
+patching file app/code/core/Mage/Authorizenet/Model/Directpost.php
+patching file app/code/core/Mage/Authorizenet/Model/Directpost/Request.php
+patching file app/code/core/Mage/Authorizenet/Model/Directpost/Response.php
+patching file app/code/core/Mage/Authorizenet/etc/config.xml
+patching file app/code/core/Mage/Authorizenet/etc/system.xml
+
+
