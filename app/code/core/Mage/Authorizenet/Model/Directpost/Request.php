@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Authorizenet
- * @copyright  Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2019 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -36,15 +36,8 @@ class Mage_Authorizenet_Model_Directpost_Request extends Varien_Object
     protected $_transKey = null;
 
     /**
-     * Hexadecimal signature key.
-     *
-     * @var string
-     */
-    protected $_signatureKey = '';
-
-    /**
      * Return merchant transaction key.
-     * Needed to generate MD5 sign.
+     * Needed to generate sign.
      *
      * @return string
      */
@@ -55,7 +48,7 @@ class Mage_Authorizenet_Model_Directpost_Request extends Varien_Object
 
     /**
      * Set merchant transaction key.
-     * Needed to generate MD5 sign.
+     * Needed to generate sign.
      *
      * @param string $transKey
      * @return Mage_Authorizenet_Model_Directpost_Request
@@ -67,7 +60,7 @@ class Mage_Authorizenet_Model_Directpost_Request extends Varien_Object
     }
 
     /**
-     * Generates the MD5 fingerprint for request.
+     * Generates the fingerprint for request.
      *
      * @param string $merchantApiLoginId
      * @param string $merchantTransactionKey
@@ -80,19 +73,19 @@ class Mage_Authorizenet_Model_Directpost_Request extends Varien_Object
     {
         if (phpversion() >= '5.1.2') {
             return hash_hmac("md5",
-                $merchantApiLoginId . '^' .
-                $fpSequence . '^' .
-                $fpTimestamp . '^' .
-                $amount . '^' .
+                $merchantApiLoginId . "^" .
+                $fpSequence . "^" .
+                $fpTimestamp . "^" .
+                $amount . "^" .
                 $currencyCode, $merchantTransactionKey
             );
         }
 
         return bin2hex(mhash(MHASH_MD5,
-            $merchantApiLoginId . '^' .
-            $fpSequence . '^' .
-            $fpTimestamp . '^' .
-            $amount . '^' .
+            $merchantApiLoginId . "^" .
+            $fpSequence . "^" .
+            $fpTimestamp . "^" .
+            $amount . "^" .
             $currencyCode, $merchantTransactionKey
         ));
     }
@@ -117,7 +110,6 @@ class Mage_Authorizenet_Model_Directpost_Request extends Varien_Object
             ->setXRelayUrl($paymentMethod->getRelayUrl());
 
         $this->_setTransactionKey($paymentMethod->getConfigData('trans_key'));
-        $this->_setSignatureKey($paymentMethod->getConfigData('signature_key'));
         return $this;
     }
 
@@ -186,78 +178,16 @@ class Mage_Authorizenet_Model_Directpost_Request extends Varien_Object
     public function signRequestData()
     {
         $fpTimestamp = time();
-
-        if (!empty($this->_getSignatureKey())) {
-            $hash = $this->_generateSha2RequestSign(
-                $this->getXLogin(),
-                $this->_getSignatureKey(),
-                $this->getXAmount(),
-                $this->getXCurrencyCode(),
-                $this->getXFpSequence(),
-                $fpTimestamp
-            );
-        } else {
-            $hash = $this->generateRequestSign(
-                $this->getXLogin(),
-                $this->_getTransactionKey(),
-                $this->getXAmount(),
-                $this->getXCurrencyCode(),
-                $this->getXFpSequence(),
-                $fpTimestamp
-            );
-        }
-
+        $hash = $this->generateRequestSign(
+            $this->getXLogin(),
+            $this->_getTransactionKey(),
+            $this->getXAmount(),
+            $this->getXCurrencyCode(),
+            $this->getXFpSequence(),
+            $fpTimestamp
+        );
         $this->setXFpTimestamp($fpTimestamp);
         $this->setXFpHash($hash);
         return $this;
-    }
-
-    /**
-     * Generates the SHA2 fingerprint for request.
-     *
-     * @param string $merchantApiLoginId
-     * @param string $merchantSignatureKey
-     * @param string $amount
-     * @param string $currencyCode
-     * @param string $fpSequence An invoice number or random number.
-     * @param string $fpTimestamp
-     * @return string The fingerprint.
-     */
-    protected function _generateSha2RequestSign(
-        $merchantApiLoginId,
-        $merchantSignatureKey,
-        $amount,
-        $currencyCode,
-        $fpSequence,
-        $fpTimestamp
-    ) {
-        $message = $merchantApiLoginId . '^' . $fpSequence . '^' . $fpTimestamp . '^' . $amount . '^' . $currencyCode;
-
-        return strtoupper(hash_hmac('sha512', $message, pack('H*', $merchantSignatureKey)));
-    }
-
-    /**
-     * Return merchant hexadecimal signature key.
-     *
-     * Needed to generate SHA2 sign.
-     *
-     * @return string
-     */
-    protected function _getSignatureKey()
-    {
-        return $this->_signatureKey;
-    }
-
-    /**
-     * Set merchant hexadecimal signature key.
-     *
-     * Needed to generate SHA2 sign.
-     *
-     * @param string $signatureKey
-     * @return void
-     */
-    protected function _setSignatureKey($signatureKey)
-    {
-        $this->_signatureKey = $signatureKey;
     }
 }
